@@ -23,7 +23,7 @@
 Используйте эту команду для автоматической загрузки, исполнения скрипта и настройки всех правил. Скрипт сам запросит у вас **IP-адрес зарубежного сервера** и **перенаправляемый порт**.
 
 ```bash
-wget -O - [https://raw.githubusercontent.com/ВАШ_ПОЛЬЗОВАТЕЛЬ/ВАШ_РЕПОЗИТОРИЙ/main/install_nat.sh](https://raw.githubusercontent.com/ВАШ_ПОЛЬЗОВАТЕЛЬ/ВАШ_РЕПОЗИТОРИЙ/main/install_nat.sh) | sudo bash
+wget -O - [https://raw.githubusercontent.com/denpiligrim/iptables/main/install_nat.sh](https://raw.githubusercontent.com/denpiligrim/iptables/main/install_nat.sh) | sudo bash
 ````
 
 -----
@@ -145,6 +145,4 @@ sudo iptables -t nat -L -n -v
 
 ```bash
 sudo reboot
-```
-```
 ```

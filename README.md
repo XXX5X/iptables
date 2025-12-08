@@ -23,7 +23,7 @@
 Используйте эту команду для автоматической загрузки, исполнения скрипта и настройки всех правил. Скрипт сам запросит у вас **IP-адрес зарубежного сервера** и **перенаправляемый порт**.
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/denpiligrim/iptables/main/install_nat.sh | sudo bash
+bash <(curl -fsSL https://raw.githubusercontent.com/denpiligrim/iptables/main/install_nat.sh)
 ````
 
 -----

